@@ -10,11 +10,7 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   externals: {
-    "styled-components": {
-      commonjs: "styled-components",
-      commonjs2: "styled-components",
-      amd: "styled-components",
-    },
+    "styled-components": "styled-components",
     "react": "react",
     "react-dom": "react-dom",
     "antd": "antd",

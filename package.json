@@ -18,13 +18,11 @@
   ],
   "author": "handy",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "antd": "^3.10.7",
     "react": "^16.6.3",
     "styled-components": "^4.1.1",
-    "prop-types": "^15.6.2"
-  },
-  "devDependencies": {
+    "prop-types": "^15.6.2",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-loader": "7",
