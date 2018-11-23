@@ -17,11 +17,12 @@ const getIconType = fileType => {
 }
 
 const CustomIcon = Icon.createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_922089_jv1u5441sd.js', // 在 iconfont.cn 上生成
+  scriptUrl: '//at.alicdn.com/t/font_922089_bk9l48330b8.js', // 在 iconfont.cn 上生成
 })
 
 const FileIcon = ({ style = {}, size = 50, type, ...rest }) => {
   const iconType = getIconType(type)
   return <CustomIcon type={`icon-${iconType}`} style={{ ...style, fontSize: size }} { ...rest } />
 }
+FileIcon.displayName = 'FileIcon'
 export default FileIcon
