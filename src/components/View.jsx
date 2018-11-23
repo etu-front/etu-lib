@@ -77,10 +77,12 @@ const View = ({ className, children, align, justify, column = false, wrap = fals
     </Container>
   )
 }
+View.displayName = 'View'
 
 View.Center = styled(View)`
   align-items: center !important;
   justify-content: center !important;
 `
+View.Center.displayName = 'View.Center'
 
 export default View
