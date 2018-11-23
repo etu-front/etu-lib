@@ -1,12 +1,12 @@
 # ETU-LIB
 
-## 依赖
+## Dependencies
 
 - react
 - antd
 - styled-components
 
-## 包含
+## Include
 
 - View
 
@@ -14,7 +14,7 @@
 
   ![2018-11-23 17 54 15](https://user-images.githubusercontent.com/5368890/48937373-d4b33c00-ef48-11e8-8a46-63f12f07939d.png)
 
-  使用
+  Usage
   ```
     import { FileIcon } from '@etu/lib'
 
@@ -23,25 +23,34 @@
 - MediaList
 
   + 普通视图
+
   ![2018-11-23 17 32 21](https://user-images.githubusercontent.com/5368890/48936436-eba45f00-ef45-11e8-8073-0c48d21cd15c.png)
+
   + 全铺视图
+
    ![2018-11-23 17 31 46](https://user-images.githubusercontent.com/5368890/48936484-0a0a5a80-ef46-11e8-8c18-bc52d0873376.png)
+
   + 带文件名视图
+
   ![2018-11-23 17 30 27](https://user-images.githubusercontent.com/5368890/48936438-ec3cf580-ef45-11e8-8d92-c4d8206ed520.png)
 
 - SlideShow
  ![2018-11-23 17 49 20](https://user-images.githubusercontent.com/5368890/48937139-260efb80-ef48-11e8-93ad-7a76698428e1.png)
 
 
-  使用
+## Usage
   ```jsx
   import { MediaList, SlideShow } from '@etu/lib'
   import APIS from 'conf/apis'
 
+  const getFile = id => APIS.getFile.id(id)
+  const getDownload = id => APIS.getDownload.id(id)
+  const getThumbnail = (id, width, height) => APIS.SIZE_THUMBNAIL.id(id).width(width).height(height)
+
   // 需重载这几个静态方法
-  SlideShow.getFile = MediaList.getFile = id => APIS.getFile.id(id)
-  SlideShow.getDownload = MediaList.getDownload = id => APIS.getDownload.id(id)
-  SlideShow.getThumbnail = MediaList..getThumbnail = (id, width, height) => APIS.SIZE_THUMBNAIL.id(id).width(width).height(height)
+  SlideShow.getFile = MediaList.getFile = getFile
+  SlideShow.getDownload = MediaList.getDownload = getDownload
+  SlideShow.getThumbnail = MediaList..getThumbnail = getThumbnail
 
   const items = [
     {
