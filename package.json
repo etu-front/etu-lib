@@ -11,6 +11,7 @@
     "build": "yarn lint && webpack --progress",
     "watch": "webpack --watch --progress",
     "lint": "eslint --ext .jsx,.js src/",
+    "analyze": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -38,6 +39,7 @@
     "react-lazyload": "^2.3.0",
     "styled-components": "^4.1.1",
     "webpack": "^4.25.1",
+    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2"
   }
 }
