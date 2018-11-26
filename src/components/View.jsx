@@ -7,14 +7,30 @@ const Container = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  font:inherit;
-  text-align:inherit;
-  text-decoration:none;
-  list-style:none;
-  pointer-events:auto;
+  font: inherit;
+  text-align: inherit;
+  text-decoration: none;
+  list-style: none;
+  pointer-events: auto;
 `
 
-const View = ({ className, children, align, justify, column = false, wrap = false, row = false, radius, height, background, color, flex, width, style, ...rest }) => {
+const View = ({
+  className,
+  children,
+  align,
+  justify,
+  column = false,
+  wrap = false,
+  row = false,
+  radius,
+  height,
+  background,
+  color,
+  flex,
+  width,
+  style,
+  ...rest
+}) => {
   let customStyle = {}
 
   if (row) {
@@ -68,11 +84,7 @@ const View = ({ className, children, align, justify, column = false, wrap = fals
   }
 
   return (
-    <Container
-      className={className}
-      style={Object.keys(customStyle) ? customStyle : null}
-      {...rest}
-    >
+    <Container className={className} style={Object.keys(customStyle) ? customStyle : null} {...rest}>
       {children}
     </Container>
   )

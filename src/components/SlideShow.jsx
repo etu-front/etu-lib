@@ -1,18 +1,10 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
 import { Icon } from 'antd'
 import View from './View'
 import FileIcon from './FileIcon'
-
-import styled from 'styled-components'
-
-const classnames = obj => {
-  const cs = []
-  for(let c in obj) {
-    if (obj[c]) cs.push(c)
-  }
-  return cs.join(' ')
-}
 
 const Container = styled(View)`
   position: fixed;
@@ -23,7 +15,7 @@ const Container = styled(View)`
   z-index: 9999;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0, 0.6);
+  background: rgba(0, 0, 0, 0.6);
 `
 const Header = styled.div`
   position: absolute;
@@ -50,7 +42,7 @@ const Sider = styled(View)`
   height: 100%;
   overflow-y: auto;
   padding: 10px;
-  background: rgba(0, 0, 0, .3);
+  background: rgba(0, 0, 0, 0.3);
   li {
     height: 80px;
     background-size: cover !important;
@@ -64,9 +56,9 @@ const Sider = styled(View)`
 
 const BaseIcon = styled.a`
   color: #fff;
-  transition: opacity .1s;
-  text-shadow: 0px 0px 2px rgba(0,0,0,.8);
-  opacity: .8;
+  transition: opacity 0.1s;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+  opacity: 0.8;
   font-size: 30px;
   &:hover {
     color: #fff;
@@ -82,7 +74,6 @@ const DirectionIcon = styled(BaseIcon)`
   height: 100%;
   font-size: 36px;
 `
-
 
 export default class SlideShow extends Component {
   static displayName = 'SlideShow'
@@ -107,24 +98,16 @@ export default class SlideShow extends Component {
     return null
   }
 
+  static getThumbnail = (id, width, height) => {}
+  static getFile = id => {}
+  static getDownload = id => {}
+
   state = {
     current: this.props.current,
     visible: this.props.visible
   }
 
-  // UNSAFE_componentWillReceiveProps(nextProps) {
-  //   if (nextProps.visible && !this.props.visible) {
-  //     document.addEventListener('keydown', this.onKeyDown, false)
-  //     document.body.style.overflow = 'hidden'
-  //     this.setState({ current: nextProps.current })
-  //   }
-  //   if (!nextProps.visible && this.props.visible) {
-  //     document.body.style.overflow = ''
-  //     document.removeEventListener('keydown', this.onKeyDown)
-  //   }
-  // }
-
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (this.props.visible && !prevProps.visible) {
       document.addEventListener('keydown', this.onKeyDown, false)
       document.body.style.overflow = 'hidden'
@@ -134,10 +117,6 @@ export default class SlideShow extends Component {
       document.removeEventListener('keydown', this.onKeyDown)
     }
   }
-
-  static getThumbnail = (id, width, height) => {}
-  static getFile = id => {}
-  static getDownload = id => {}
 
   onKeyDown = e => {
     if (!this.props.medias || this.props.medias.length < 1) return
@@ -210,19 +189,36 @@ export default class SlideShow extends Component {
   renderDownloadIcon(item) {
     if (this.props.canDownload) {
       return (
-        <BaseIcon as='a' href={SlideShow.getDownload(item.media_id)} rel="noopener noreferrer" target="_blank" download style={{ marginRight: 20 }}>
+        <BaseIcon
+          as="a"
+          href={SlideShow.getDownload(item.media_id)}
+          rel="noopener noreferrer"
+          target="_blank"
+          download
+          style={{ marginRight: 20 }}
+        >
           <Icon type="download" size={32} />
         </BaseIcon>
       )
     }
     if (item.type !== 'picture' && item.type !== 'video') {
       return (
-        <BaseIcon as='a' href={SlideShow.getFile(item.media_id)} rel="noopener noreferrer" target="_blank" style={{ marginRight: 20 }}>
+        <BaseIcon
+          as="a"
+          href={SlideShow.getFile(item.media_id)}
+          rel="noopener noreferrer"
+          target="_blank"
+          style={{ marginRight: 20 }}
+        >
           <Icon type="eye" size={32} />
         </BaseIcon>
       )
     }
-    return <BaseIcon as='a' style={{ marginRight: 20 }}> </BaseIcon>
+    return (
+      <BaseIcon as="a" style={{ marginRight: 20 }}>
+        {' '}
+      </BaseIcon>
+    )
   }
   renderCurrentMedia() {
     const media = this.currentMedia,
@@ -237,7 +233,7 @@ export default class SlideShow extends Component {
       <View flex={1} className={'relative'}>
         <Header>
           {this.renderDownloadIcon(media)}
-          <BaseIcon as={Icon} type="close-circle" theme='filled' onClick={this.handleClose} />
+          <BaseIcon as={Icon} type="close-circle" theme="filled" onClick={this.handleClose} />
         </Header>
         <Main
           onClick={
@@ -250,7 +246,15 @@ export default class SlideShow extends Component {
                 }
           }
         >
-          {this.isMultiple && this.props.sidebar && <DirectionIcon as={Icon} type="left" onClick={this.prevMedia} style={{ justifyContent: 'flex-start', left: 0 }} />}
+          {this.isMultiple &&
+            this.props.sidebar && (
+              <DirectionIcon
+                as={Icon}
+                type="left"
+                onClick={this.prevMedia}
+                style={{ justifyContent: 'flex-start', left: 0 }}
+              />
+            )}
           <div style={{ maxWidth: mediaWidth, maxHeight: mediaHeight, textAlign: 'center', width: '100%' }}>
             {type === 'picture' && (
               <img
@@ -280,7 +284,15 @@ export default class SlideShow extends Component {
                 </a>
               )}
           </div>
-          {this.isMultiple && this.props.sidebar && <DirectionIcon as={Icon} type="right" onClick={this.nextMedia} style={{ justifyContent: 'flex-end', right: 0 }} />}
+          {this.isMultiple &&
+            this.props.sidebar && (
+              <DirectionIcon
+                as={Icon}
+                type="right"
+                onClick={this.nextMedia}
+                style={{ justifyContent: 'flex-end', right: 0 }}
+              />
+            )}
         </Main>
       </View>
     )

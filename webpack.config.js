@@ -10,11 +10,11 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   externals: {
-    "styled-components": "styled-components",
-    "react": "react",
-    "react-dom": "react-dom",
-    "antd": "antd",
-    "prop-types": "prop-types"
+    'styled-components': 'styled-components',
+    react: 'react',
+    'react-dom': 'react-dom',
+    antd: 'antd',
+    'prop-types': 'prop-types'
   },
   output: {
     filename: '[name].js',
@@ -30,11 +30,9 @@ module.exports = {
       },
       {
         test: /\.(jpeg|jpg|png|gif|svg)$/i,
-        loader: "file-loader?name=./icons/[name].[ext]"
+        loader: 'file-loader?name=./icons/[name].[ext]'
       }
     ]
   },
-  plugins: [
-    new CleanWebpackPlugin(['lib'])
-  ]
+  plugins: [new CleanWebpackPlugin(['lib'])]
 }

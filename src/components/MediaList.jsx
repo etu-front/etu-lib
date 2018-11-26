@@ -4,7 +4,7 @@ import LazyLoad from 'react-lazyload'
 import styled from 'styled-components'
 
 import { Card, Icon, Tooltip } from 'antd'
-import FileIcon from './FileIcon';
+import FileIcon from './FileIcon'
 
 const PlayIcon = styled(Icon)`
   color: white;
@@ -51,11 +51,11 @@ List.Item = styled(Card)`
     background: ${props => props.background};
     position: relative;
     display: flex;
-    align-items: ${props => props.fixed ? 'center' : 'flex-start'};
+    align-items: ${props => (props.fixed ? 'center' : 'flex-start')};
     justify-content: center;
   }
   .ant-card-body {
-    padding: ${props => props.fixed ? 0 : '18px 22px'};
+    padding: ${props => (props.fixed ? 0 : '18px 22px')};
     text-align: center;
     cursor: pointer;
   }
@@ -66,12 +66,12 @@ List.Name = styled.div`
   left: 0;
   right: 0;
   padding: 0 5px;
-  bottom: ${props => props.fixed ? 0 : '10px'};
+  bottom: ${props => (props.fixed ? 0 : '10px')};
   height: 20px;
   font-size: 12px;
   line-height: 20px;
-  color: ${props => props.fixed ? '#fff' : '#787878'};
-  background: ${props => props.fixed ? '#33333399' : 'transparent'};
+  color: ${props => (props.fixed ? '#fff' : '#787878')};
+  background: ${props => (props.fixed ? '#33333399' : 'transparent')};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -80,7 +80,7 @@ List.Name = styled.div`
 
 const FileName = ({ name, fixed }) => (
   <List.Name fixed={fixed ? 1 : 0}>
-    <Tooltip title={name.length < 20 ? '' : name} placement='topLeft'>
+    <Tooltip title={name.length < 20 ? '' : name} placement="topLeft">
       {name}
     </Tooltip>
   </List.Name>
@@ -141,7 +141,10 @@ export default class MediaList extends PureComponent {
     const item = items[index]
     if (item.type !== 'picture' && item.type !== 'video') {
       const a = window.document.createElement('a')
-      a.href = (this.props.pdfPrevView && item.type === 'pdf') ? MediaList.getFile(item.data || item.media_id) : MediaList.getDownload(item.data || item.media_id)
+      a.href =
+        this.props.pdfPrevView && item.type === 'pdf'
+          ? MediaList.getFile(item.data || item.media_id)
+          : MediaList.getDownload(item.data || item.media_id)
       console.log(a.href)
       a.target = '_blank'
       document.body.appendChild(a)
@@ -166,7 +169,14 @@ export default class MediaList extends PureComponent {
     thumbnail = MediaList.getThumbnail(id, width, height)
     // 预览模式，小图
     if (mediaType === 'video' || mediaType === 'picture') {
-      const img = <ImageCard thumbnail={thumbnail} width={imgWidth} height={imgHeight} icon={mediaType === 'video' && <PlayIcon type="play-circle" />} />
+      const img = (
+        <ImageCard
+          thumbnail={thumbnail}
+          width={imgWidth}
+          height={imgHeight}
+          icon={mediaType === 'video' && <PlayIcon type="play-circle" />}
+        />
+      )
       if (lazyLoad) {
         return (
           <LazyLoad height={height} offset={50} once>
@@ -176,7 +186,7 @@ export default class MediaList extends PureComponent {
       }
       return img
     }
-    return <FileIcon type={mediaType} size={fixed ? (width / 2) : imgHeight } style={{ margin: '0 auto' }} />
+    return <FileIcon type={mediaType} size={fixed ? width / 2 : imgHeight} style={{ margin: '0 auto' }} />
   }
 
   // 视频和图片
@@ -185,7 +195,7 @@ export default class MediaList extends PureComponent {
     return (
       <List margin={margin}>
         {items.map((data, mediaIndex) => {
-          const fileName =  !noName && MediaList.getFileName(data)
+          const fileName = !noName && MediaList.getFileName(data)
           return (
             <List.Item
               onClick={this.onClick.bind(null, items, mediaIndex)}
