@@ -12,8 +12,7 @@
     "watch": "webpack --watch --progress",
     "lint": "eslint --ext .jsx,.js src/",
     "analyze": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json",
-    "test": "jest --coverage",
-    "publish": "npm setnpm publish --access=public"
+    "test": "jest --coverage"
   },
   "keywords": [
     "ui",
