@@ -1,6 +1,6 @@
 {
   "name": "@etu/lib",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "react base ui library by etu fte team",
   "main": "lib/index.js",
   "repository": {
@@ -12,7 +12,8 @@
     "watch": "webpack --watch --progress",
     "lint": "eslint --ext .jsx,.js src/",
     "analyze": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "publish": "npm setnpm publish --access=public"
   },
   "keywords": [
     "ui",

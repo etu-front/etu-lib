@@ -1,5 +1,7 @@
 # ETU-LIB
 
+![build](https://travis-ci.org/etu-front/etu-lib.svg?branch=master) ![](https://img.shields.io/badge/framework-react-blue.svg)
+
 ## Dependencies
 
 - react
