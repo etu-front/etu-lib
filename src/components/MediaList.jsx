@@ -34,7 +34,7 @@ const ImageCard = ({ thumbnail, width, height, backgroundColor = '#F0F0F0', icon
   </div>
 )
 
-const List = styled.div`
+export const List = styled.div`
   clear: both;
   margin: 0 -${props => props.margin}px;
   list-style: none;
@@ -60,6 +60,7 @@ List.Item = styled(Card)`
     cursor: pointer;
   }
 `
+List.Item.displayName = 'ListItem'
 
 List.Name = styled.div`
   position: absolute;
@@ -78,7 +79,7 @@ List.Name = styled.div`
   text-align: center;
 `
 
-const FileName = ({ name, fixed }) => (
+export const FileName = ({ name, fixed }) => (
   <List.Name fixed={fixed ? 1 : 0}>
     <Tooltip title={name.length < 20 ? '' : name} placement="topLeft">
       {name}
@@ -86,7 +87,7 @@ const FileName = ({ name, fixed }) => (
   </List.Name>
 )
 
-const Close = styled.div`
+export const Close = styled.div`
   position: absolute;
   right: 2px;
   top: 2px;

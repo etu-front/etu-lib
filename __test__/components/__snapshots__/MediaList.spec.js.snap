@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MediaList correct view 1`] = `
+.c0 {
+  clear: both;
+  margin: 0 -5px;
+  list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c1.ant-card {
+  margin: 5px;
+  overflow: hidden;
+  border-color: #d5d4d4;
+  border-radius: 4px;
+  background: #fff;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c1 .ant-card-body {
+  padding: 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+<div
+  className="c0"
+>
+  <div
+    background="#fff"
+    className="ant-card c1"
+    fixed={1}
+    margin={5}
+    onClick={[Function]}
+    style={
+      Object {
+        "height": 120,
+        "width": 160,
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <i
+        className="anticon"
+        style={
+          Object {
+            "fontSize": 80,
+            "margin": "0 auto",
+          }
+        }
+      >
+        <svg
+          aria-hidden="true"
+          className=""
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          width="1em"
+        >
+          <use
+            xlinkHref="#icon-pdf"
+          />
+        </svg>
+      </i>
+    </div>
+  </div>
+  <div
+    background="#fff"
+    className="ant-card c1"
+    fixed={1}
+    margin={5}
+    onClick={[Function]}
+    style={
+      Object {
+        "height": 120,
+        "width": 160,
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <i
+        className="anticon"
+        style={
+          Object {
+            "fontSize": 80,
+            "margin": "0 auto",
+          }
+        }
+      >
+        <svg
+          aria-hidden="true"
+          className=""
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          width="1em"
+        >
+          <use
+            xlinkHref="#icon-word"
+          />
+        </svg>
+      </i>
+    </div>
+  </div>
+  <div
+    background="#fff"
+    className="ant-card c1"
+    fixed={1}
+    margin={5}
+    onClick={[Function]}
+    style={
+      Object {
+        "height": 120,
+        "width": 160,
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        style={
+          Object {
+            "backgroundColor": "#F0F0F0",
+            "backgroundImage": "url(/bos/api/v1/files/67BD020K2E6JMGX9R00NZ8DQ8KBSSWPG/thumbnail/?width=160&height=120&mode=zoom_cut)",
+            "backgroundPosition": "center",
+            "backgroundSize": "cover",
+            "display": "flex",
+            "height": 120,
+            "margin": "0 auto",
+            "maxWidth": "100%",
+            "width": 160,
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    background="#fff"
+    className="ant-card c1"
+    fixed={1}
+    margin={5}
+    onClick={[Function]}
+    style={
+      Object {
+        "height": 120,
+        "width": 160,
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        style={
+          Object {
+            "backgroundColor": "#F0F0F0",
+            "backgroundImage": "url(/bos/api/v1/files/73VS29QWEZNRYSVDQX30TV4VFMBBYK37/thumbnail/?width=160&height=120&mode=zoom_cut)",
+            "backgroundPosition": "center",
+            "backgroundSize": "cover",
+            "display": "flex",
+            "height": 120,
+            "margin": "0 auto",
+            "maxWidth": "100%",
+            "width": 160,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;

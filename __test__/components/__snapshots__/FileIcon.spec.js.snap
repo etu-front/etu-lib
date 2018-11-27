@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileIcon render correctly 1`] = `
+<i
+  className="anticon"
+  style={
+    Object {
+      "fontSize": 50,
+    }
+  }
+>
+  <svg
+    aria-hidden="true"
+    className=""
+    fill="currentColor"
+    focusable="false"
+    height="1em"
+    width="1em"
+  >
+    <use
+      xlinkHref="#icon-pdf"
+    />
+  </svg>
+</i>
+`;

@@ -5,6 +5,8 @@
 - react
 - antd
 - styled-components
+- react-lazyload
+- prop-types
 
 ## Include
 

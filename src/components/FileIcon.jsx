@@ -6,7 +6,7 @@ icons.push('exe', 'flash', 'doc', 'gpres', 'gsheet', 'html', 'image', 'keynote')
 icons.push('link', 'mp4', 'overlay', 'pack', 'pages', 'pdf', 'ppt', 'psd', 'rtf')
 icons.push('slide', 'stypi', 'txt', 'video', 'visio', 'webex', 'word', 'xml', 'zip')
 
-const getIconType = fileType => {
+export const getIconType = fileType => {
   const type = fileType.toLowerCase()
   if (['doc', 'docx'].includes(type)) return 'word'
   if (['ppt', 'pptx'].includes(type)) return 'ppt'

@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`View props 1`] = `
+.c0 {
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font: inherit;
+  text-align: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  list-style: none;
+  pointer-events: auto;
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "alignItems": "flex-end",
+      "background": "red",
+      "borderRadius": 5,
+      "color": "white",
+      "flex": 1,
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "height": 100,
+      "justifyContent": "stretch",
+      "lineHeight": "24px",
+      "width": 200,
+    }
+  }
+>
+  good
+</div>
+`;
+
+exports[`View render View.Center 1`] = `
+.c1 {
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font: inherit;
+  text-align: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  list-style: none;
+  pointer-events: auto;
+}
+
+.c0 {
+  -webkit-align-items: center !important;
+  -webkit-box-align: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+  -webkit-box-pack: center !important;
+  -webkit-justify-content: center !important;
+  -ms-flex-pack: center !important;
+  justify-content: center !important;
+}
+
+<div
+  className="c0 c1"
+  style={Object {}}
+>
+  Hello
+</div>
+`;
+
+exports[`View render layout 1`] = `
+.c0 {
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font: inherit;
+  text-align: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  list-style: none;
+  pointer-events: auto;
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "alignItems": "flex-start",
+      "flexDirection": "row",
+    }
+  }
+>
+  <div
+    className="c0"
+    style={
+      Object {
+        "width": 200,
+      }
+    }
+  >
+    1
+  </div>
+  <div
+    className="c0"
+    style={
+      Object {
+        "background": "#eee",
+        "flex": 1,
+      }
+    }
+  />
+</div>
+`;
