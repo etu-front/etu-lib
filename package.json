@@ -8,7 +8,7 @@
     "url": "git@github.com:etu-front/etu-lib.git"
   },
   "scripts": {
-    "build": "yarn lint && webpack --progress",
+    "build": "yarn lint && yarn test && webpack --progress",
     "watch": "webpack --watch --progress",
     "lint": "eslint --ext .jsx,.js src/",
     "analyze": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json",

@@ -63,5 +63,4 @@ describe('FileIcon', function() {
     const rendered = renderer.create(<FileIcon type={'pdf'} />)
     expect(rendered.toJSON()).toMatchSnapshot()
   })
-
 })

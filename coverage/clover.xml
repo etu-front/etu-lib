@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1543295516211" clover="3.2.0">
-  <project timestamp="1543295516211" name="All files">
+<coverage generated="1543295678392" clover="3.2.0">
+  <project timestamp="1543295678393" name="All files">
     <metrics statements="100" coveredstatements="83" conditionals="107" coveredconditionals="80" methods="23" coveredmethods="14" elements="230" coveredelements="177" complexity="0" loc="100" ncloc="100" packages="1" files="3" classes="3">
       <file name="FileIcon.jsx" path="/Users/handy/Etu/etu-lib/src/components/FileIcon.jsx">
         <metrics statements="17" coveredstatements="17" conditionals="12" coveredconditionals="12" methods="2" coveredmethods="2"/>
