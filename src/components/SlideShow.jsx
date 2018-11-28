@@ -101,7 +101,12 @@ export default class SlideShow extends Component {
   static getThumbnail = (id, width, height) => {}
   static getFile = id => {}
   static getDownload = id => {}
-
+  // 绑定获取文件地址函数
+  static bindGetFileFunctions = ({ getThumbnail, getFile, getDownload }) => {
+    SlideShow.getFile = getFile
+    SlideShow.getThumbnail = getThumbnail
+    SlideShow.getDownload = getDownload
+  }
   state = {
     current: this.props.current,
     visible: this.props.visible
@@ -233,7 +238,7 @@ export default class SlideShow extends Component {
       <View flex={1} className={'relative'}>
         <Header>
           {this.renderDownloadIcon(media)}
-          <BaseIcon as={Icon} type="close-circle" theme="filled" onClick={this.handleClose} />
+          <BaseIcon onClick={this.handleClose}><Icon type="close-circle" theme="filled"/></BaseIcon>
         </Header>
         <Main
           onClick={
@@ -249,11 +254,9 @@ export default class SlideShow extends Component {
           {this.isMultiple &&
             this.props.sidebar && (
               <DirectionIcon
-                as={Icon}
-                type="left"
                 onClick={this.prevMedia}
                 style={{ justifyContent: 'flex-start', left: 0 }}
-              />
+              ><Icon type="left" /></DirectionIcon>
             )}
           <div style={{ maxWidth: mediaWidth, maxHeight: mediaHeight, textAlign: 'center', width: '100%' }}>
             {type === 'picture' && (
@@ -274,6 +277,7 @@ export default class SlideShow extends Component {
                 style={{ maxHeight: mediaHeight, maxWidth: 'calc(100% - 40%)' }}
               />
             )}
+
             {type !== 'picture' &&
               type !== 'video' && (
                 <a href={SlideShow.getFile(media.media_id)} rel="noopener noreferrer" target="_blank">
@@ -287,11 +291,9 @@ export default class SlideShow extends Component {
           {this.isMultiple &&
             this.props.sidebar && (
               <DirectionIcon
-                as={Icon}
-                type="right"
                 onClick={this.nextMedia}
                 style={{ justifyContent: 'flex-end', right: 0 }}
-              />
+              ><Icon type="right"/></DirectionIcon>
             )}
         </Main>
       </View>

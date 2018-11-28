@@ -127,6 +127,13 @@ export default class MediaList extends PureComponent {
   static getThumbnail = (id, width, height) => {}
   static getFile = id => {}
   static getDownload = id => {}
+  // 绑定获取文件地址函数
+  static bindGetFileFunctions = ({ getThumbnail, getFile, getDownload }) => {
+    MediaList.getFile = getFile
+    MediaList.getThumbnail = getThumbnail
+    MediaList.getDownload = getDownload
+  }
+
   static getFileName = data => {
     if (data.name) return data.name
     if (data.extra && data.extra.attrs) return data.extra.attrs.file_name
@@ -146,7 +153,6 @@ export default class MediaList extends PureComponent {
         this.props.pdfPrevView && item.type === 'pdf'
           ? MediaList.getFile(item.data || item.media_id)
           : MediaList.getDownload(item.data || item.media_id)
-      console.log(a.href)
       a.target = '_blank'
       document.body.appendChild(a)
       a.click()

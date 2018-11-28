@@ -52,9 +52,8 @@
   const getThumbnail = (id, width, height) => APIS.SIZE_THUMBNAIL.id(id).width(width).height(height)
 
   // 需重载这几个静态方法
-  SlideShow.getFile = MediaList.getFile = getFile
-  SlideShow.getDownload = MediaList.getDownload = getDownload
-  SlideShow.getThumbnail = MediaList..getThumbnail = getThumbnail
+  MediaList.bindGetFileFunctions({ getThumbnail, getFile, getDownload })
+  SlideShow.bindGetFileFunctions({ getThumbnail, getFile, getDownload })
 
   const items = [
     {
