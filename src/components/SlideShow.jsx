@@ -95,6 +95,7 @@ export default class SlideShow extends Component {
 
   static getDerivedStateFromProps(props, state) {
     if (props.visible && !state.visible) return { current: props.current, visible: props.visible }
+    if (!props.visible) return { visible: false, current: 0 }
     return null
   }
 
@@ -195,7 +196,6 @@ export default class SlideShow extends Component {
     if (this.props.canDownload) {
       return (
         <BaseIcon
-          as="a"
           href={SlideShow.getDownload(item.media_id)}
           rel="noopener noreferrer"
           target="_blank"
@@ -238,7 +238,9 @@ export default class SlideShow extends Component {
       <View flex={1} className={'relative'}>
         <Header>
           {this.renderDownloadIcon(media)}
-          <BaseIcon onClick={this.handleClose}><Icon type="close-circle" theme="filled"/></BaseIcon>
+          <BaseIcon onClick={this.handleClose}>
+            <Icon type="close-circle" theme="filled" />
+          </BaseIcon>
         </Header>
         <Main
           onClick={
@@ -251,13 +253,11 @@ export default class SlideShow extends Component {
                 }
           }
         >
-          {this.isMultiple &&
-            this.props.sidebar && (
-              <DirectionIcon
-                onClick={this.prevMedia}
-                style={{ justifyContent: 'flex-start', left: 0 }}
-              ><Icon type="left" /></DirectionIcon>
-            )}
+          {this.isMultiple && this.props.sidebar && (
+            <DirectionIcon onClick={this.prevMedia} style={{ justifyContent: 'flex-start', left: 0 }}>
+              <Icon type="left" />
+            </DirectionIcon>
+          )}
           <div style={{ maxWidth: mediaWidth, maxHeight: mediaHeight, textAlign: 'center', width: '100%' }}>
             {type === 'picture' && (
               <img
@@ -278,23 +278,20 @@ export default class SlideShow extends Component {
               />
             )}
 
-            {type !== 'picture' &&
-              type !== 'video' && (
-                <a href={SlideShow.getFile(media.media_id)} rel="noopener noreferrer" target="_blank">
-                  <View align={'center'}>
-                    <FileIcon type={type} size={100} />
-                    <p className={'t-white m-t-20 f18'}>{media.name}</p>
-                  </View>
-                </a>
-              )}
-          </div>
-          {this.isMultiple &&
-            this.props.sidebar && (
-              <DirectionIcon
-                onClick={this.nextMedia}
-                style={{ justifyContent: 'flex-end', right: 0 }}
-              ><Icon type="right"/></DirectionIcon>
+            {type !== 'picture' && type !== 'video' && (
+              <a href={SlideShow.getFile(media.media_id)} rel="noopener noreferrer" target="_blank">
+                <View align={'center'}>
+                  <FileIcon type={type} size={100} />
+                  <p className={'t-white m-t-20 f18'}>{media.name}</p>
+                </View>
+              </a>
             )}
+          </div>
+          {this.isMultiple && this.props.sidebar && (
+            <DirectionIcon onClick={this.nextMedia} style={{ justifyContent: 'flex-end', right: 0 }}>
+              <Icon type="right" />
+            </DirectionIcon>
+          )}
         </Main>
       </View>
     )
@@ -306,39 +303,38 @@ export default class SlideShow extends Component {
     return (
       <Container row align="stretch">
         {this.renderCurrentMedia()}
-        {sidebar &&
-          medias.length > 1 && (
-            <Sider>
-              <ul>
-                {medias.map((m, idx) => {
-                  const item = this.getMedia(idx)
-                  if (item.type === 'video' || item.type === 'picture') {
-                    const url = SlideShow.getThumbnail(item.media_id, 160, 160)
-                    return (
-                      <li
-                        key={item.media_id}
-                        className={idx === this.state.current ? 'onSelected' : ''}
-                        title={item.name}
-                        style={{ background: `url(${url}) center no-repeat` }}
-                        onClick={this.handleChange.bind(null, idx)}
-                      />
-                    )
-                  }
-
+        {sidebar && medias.length > 1 && (
+          <Sider>
+            <ul>
+              {medias.map((m, idx) => {
+                const item = this.getMedia(idx)
+                if (item.type === 'video' || item.type === 'picture') {
+                  const url = SlideShow.getThumbnail(item.media_id, 160, 160)
                   return (
                     <li
                       key={item.media_id}
                       className={idx === this.state.current ? 'onSelected' : ''}
                       title={item.name}
+                      style={{ background: `url(${url}) center no-repeat` }}
                       onClick={this.handleChange.bind(null, idx)}
-                    >
-                      <FileIcon type={item.type} size={50} style={{ margin: '0 auto', paddingTop: 10 }} />
-                    </li>
+                    />
                   )
-                })}
-              </ul>
-            </Sider>
-          )}
+                }
+
+                return (
+                  <li
+                    key={item.media_id}
+                    className={idx === this.state.current ? 'onSelected' : ''}
+                    title={item.name}
+                    onClick={this.handleChange.bind(null, idx)}
+                  >
+                    <FileIcon type={item.type} size={50} style={{ margin: '0 auto', paddingTop: 10 }} />
+                  </li>
+                )
+              })}
+            </ul>
+          </Sider>
+        )}
       </Container>
     )
   }
