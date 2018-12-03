@@ -80,7 +80,7 @@ export default class SlideShow extends Component {
 
   static propTypes = {
     visible: PropTypes.bool,
-    mediaSize: PropTypes.number,
+    canDownload: PropTypes.bool,
     onClose: PropTypes.func,
     medias: PropTypes.array,
     current: PropTypes.number
@@ -89,7 +89,7 @@ export default class SlideShow extends Component {
   static defaultProps = {
     visible: false,
     medias: [],
-    mediaSize: 600,
+    canDownload: true,
     current: 0
   }
 
@@ -108,6 +108,13 @@ export default class SlideShow extends Component {
     SlideShow.getThumbnail = getThumbnail
     SlideShow.getDownload = getDownload
   }
+
+  static getFileName = data => {
+    if (data.name) return data.name
+    if (data.extra && data.extra.file_name) return data.extra.file_name
+    if (data.extra && data.extra.attrs) return data.extra.attrs.file_name
+  }
+
   state = {
     current: this.props.current,
     visible: this.props.visible
@@ -282,7 +289,7 @@ export default class SlideShow extends Component {
               <a href={SlideShow.getFile(media.media_id)} rel="noopener noreferrer" target="_blank">
                 <View align={'center'}>
                   <FileIcon type={type} size={100} />
-                  <p className={'t-white m-t-20 f18'}>{media.name}</p>
+                  <p className={'t-white m-t-20 f18'}>{SlideShow.getFileName(media)}</p>
                 </View>
               </a>
             )}
@@ -308,13 +315,14 @@ export default class SlideShow extends Component {
             <ul>
               {medias.map((m, idx) => {
                 const item = this.getMedia(idx)
+                const name = SlideShow.getFileName(item)
                 if (item.type === 'video' || item.type === 'picture') {
                   const url = SlideShow.getThumbnail(item.media_id, 160, 160)
                   return (
                     <li
                       key={item.media_id}
                       className={idx === this.state.current ? 'onSelected' : ''}
-                      title={item.name}
+                      title={name}
                       style={{ background: `url(${url}) center no-repeat` }}
                       onClick={this.handleChange.bind(null, idx)}
                     />
@@ -325,7 +333,7 @@ export default class SlideShow extends Component {
                   <li
                     key={item.media_id}
                     className={idx === this.state.current ? 'onSelected' : ''}
-                    title={item.name}
+                    title={name}
                     onClick={this.handleChange.bind(null, idx)}
                   >
                     <FileIcon type={item.type} size={50} style={{ margin: '0 auto', paddingTop: 10 }} />
