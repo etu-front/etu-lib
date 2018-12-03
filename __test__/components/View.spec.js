@@ -2,6 +2,7 @@ import React from 'react'
 import View from '../../src/components/View'
 import { shallow, render } from 'enzyme'
 import renderer from 'react-test-renderer'
+import { decodeStream } from 'iconv-lite';
 
 const setup = () => {
   const props = {
@@ -49,8 +50,8 @@ describe('View', function() {
     expect(style).toHaveProperty('color', 'white')
     expect(style).toHaveProperty('borderRadius', 5)
     expect(style).toHaveProperty('lineHeight', '24px')
-
     const rendered = renderer.create(jsx)
+
     expect(rendered.toJSON()).toMatchSnapshot()
 
     const columnView = shallow(<View column>column</View>)
@@ -91,5 +92,16 @@ describe('View', function() {
 
   it('should has custom classname', () => {
     expect(wrapper.is('.customClass')).toEqual(true)
+  })
+
+  it('layout 2', () => {
+    const w = renderer.create(
+      <View wrap row style={{ margin: '0 -10px'}}>
+        <View height={100} flex={1} background='red' />
+        <View height={100} flex={1} background='green' />
+        <View height={100} flex={1} background='blue' />
+      </View>
+    ).toJSON()
+    expect(w).toMatchSnapshot()
   })
 })

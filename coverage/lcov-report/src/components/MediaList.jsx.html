@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for MediaList.jsx</title>
+    <title>Code coverage report for src/components/MediaList.jsx</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="prettify.css" />
-    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,18 +16,18 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="index.html">All files</a> MediaList.jsx
+      <a href="../../index.html">All files</a> / <a href="index.html">src/components</a> MediaList.jsx
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">69.64% </span>
+        <span class="strong">70.37% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>39/56</span>
+        <span class='fraction'>38/54</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">59.09% </span>
+        <span class="strong">58.06% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>39/66</span>
+        <span class='fraction'>36/62</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">57.14% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>12/21</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">69.81% </span>
+        <span class="strong">69.23% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>37/53</span>
+        <span class='fraction'>36/52</span>
       </div>
     </div>
   </div>
@@ -272,10 +272,7 @@
 227
 228
 229
-230
-231
-232
-233</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+230</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -406,8 +403,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -415,7 +410,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -575,8 +569,8 @@ List.Name = styled.div`
   position: absolute;
   left: 0;
   right: 0;
-  padding: 0 5px;
-  bottom: ${<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; (<span class="cstat-no" title="statement not covered" >props.fixed ? 0 : '10px')</span>};
+  padding: 0 2px;
+  bottom: ${<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; (<span class="cstat-no" title="statement not covered" >props.fixed ? 0 : '5px')</span>};
   height: 20px;
   font-size: 12px;
   line-height: 20px;
@@ -614,7 +608,6 @@ export default class MediaList extends PureComponent {
     noName: PropTypes.bool,
     margin: PropTypes.number,
     bordered: PropTypes.bool,
-    fixed: PropTypes.bool,
     onDelete: PropTypes.func,
     hasDeleteButton: PropTypes.bool,
     pdfPrevView: PropTypes.bool,
@@ -624,12 +617,11 @@ export default class MediaList extends PureComponent {
 &nbsp;
   static defaultProps = {
     items: [],
-    background: '#f5f5f5',
+    background: 'transparent',
     width: 100,
     height: 100,
     margin: 5,
-    bordered: false,
-    fixed: true,
+    bordered: true,
     noName: true,
     pdfPrevView: false,
     lazyLoad: true
@@ -647,7 +639,6 @@ export default class MediaList extends PureComponent {
 &nbsp;
   static getFileName = data =&gt; {
     if (data.name) return data.name
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (data.extra &amp;&amp; data.extra.file_name) <span class="cstat-no" title="statement not covered" >return data.extra.file_name</span>
     if (data.extra &amp;&amp; data.extra.attrs) return data.extra.attrs.file_name
   }
 &nbsp;
@@ -745,10 +736,10 @@ export default class MediaList extends PureComponent {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Dec 03 2018 11:03:24 GMT+0800 (GMT+08:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 29 2018 09:31:05 GMT+0800 (GMT+08:00)
 </div>
 </div>
-<script src="prettify.js"></script>
+<script src="../../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -756,6 +747,6 @@ window.onload = function () {
         }
 };
 </script>
-<script src="sorter.js"></script>
+<script src="../../sorter.js"></script>
 </body>
 </html>

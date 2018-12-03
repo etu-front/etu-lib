@@ -1,0 +1,7 @@
+CONTRIBUTING.md
+coverage
+jest.config.js
+__test__
+node_modules
+src
+.travis.yml

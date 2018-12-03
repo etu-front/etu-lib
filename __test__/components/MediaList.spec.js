@@ -1,6 +1,6 @@
 import React from 'react'
 import MediaList, { List, FileName } from '../../src/components/MediaList'
-import { shallow, render } from 'enzyme'
+import { shallow, render, mount } from 'enzyme'
 import renderer from 'react-test-renderer'
 
 export const getThumbnail = (id, width, height) =>
@@ -9,9 +9,7 @@ export const getFile = id => `/bos/api/v1/files/${id}/`
 export const getDownload = id => `/bos/api/v1/files/${id}/download/`
 
 const setup = () => {
-  MediaList.getThumbnail = getThumbnail
-  MediaList.getFile = getFile
-  MediaList.getDownload = getDownload
+  MediaList.bindGetFileFunctions({ getThumbnail, getFile, getDownload })
 
   const medias = [
     {
@@ -184,8 +182,8 @@ describe('MediaList', function() {
   })
 
   it('List', () => {
-    const tree = renderer.create(<List margin={4}><List.Item>hello</List.Item></List>).toJSON()
-    expect(tree).toHaveStyleRule('margin', '0 -4px')
+    const tree = renderer.create(<List margin={3}><List.Item>hello</List.Item></List>).toJSON()
+    expect(tree).toHaveStyleRule('margin', '0 -3px')
     expect(tree.children[0].children[0].children[0]).toEqual('hello')
   })
 })

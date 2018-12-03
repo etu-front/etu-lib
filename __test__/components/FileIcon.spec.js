@@ -1,6 +1,6 @@
 import React from 'react'
 import FileIcon, { getIconType } from '../../src/components/FileIcon'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import renderer from 'react-test-renderer'
 
 const setup = () => {
@@ -22,7 +22,9 @@ describe('FileIcon', function() {
   const { props, wrapper } = setup()
   it('correct icon type', () => {
     expect(getIconType('doc')).toEqual('word')
+    expect(getIconType('Doc')).toEqual('word')
     expect(getIconType('docx')).toEqual('word')
+    expect(getIconType('DOCX')).toEqual('word')
     expect(getIconType('pptx')).toEqual('ppt')
     expect(getIconType('ppt')).toEqual('ppt')
     expect(getIconType('mp3')).toEqual('audio')
