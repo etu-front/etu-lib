@@ -205,7 +205,7 @@ export default class MediaList extends PureComponent {
     return (
       <List margin={margin}>
         {items.map((data, mediaIndex) => {
-          const fileName = !noName && MediaList.getFileName(data)
+          const fileName = (!noName || (data.type !== 'picture' && data.type !== 'video')) && MediaList.getFileName(data)
           return (
             <List.Item
               onClick={this.onClick.bind(null, items, mediaIndex)}
