@@ -105,6 +105,7 @@ export default class MediaList extends PureComponent {
     noName: PropTypes.bool,
     margin: PropTypes.number,
     bordered: PropTypes.bool,
+    fixed: PropTypes.bool,
     onDelete: PropTypes.func,
     hasDeleteButton: PropTypes.bool,
     pdfPrevView: PropTypes.bool,
@@ -114,11 +115,12 @@ export default class MediaList extends PureComponent {
 
   static defaultProps = {
     items: [],
-    background: 'transparent',
+    background: '#f5f5f5',
     width: 100,
     height: 100,
     margin: 5,
-    bordered: true,
+    bordered: false,
+    fixed: true,
     noName: true,
     pdfPrevView: false,
     lazyLoad: true
@@ -136,6 +138,7 @@ export default class MediaList extends PureComponent {
 
   static getFileName = data => {
     if (data.name) return data.name
+    if (data.extra && data.extra.file_name) return data.extra.file_name
     if (data.extra && data.extra.attrs) return data.extra.attrs.file_name
   }
 
