@@ -6,6 +6,7 @@ const Container = styled.div`
   justify-content: flex-start;
   box-sizing: border-box;
   display: flex;
+  position: relative;
   flex-direction: column;
   font: inherit;
   text-align: inherit;

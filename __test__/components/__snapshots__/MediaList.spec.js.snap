@@ -44,6 +44,23 @@ exports[`MediaList correct view 1`] = `
   cursor: pointer;
 }
 
+.c2 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 0 5px;
+  bottom: 0;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+  background: #33333399;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
 <div
   className="c0"
 >
@@ -86,6 +103,16 @@ exports[`MediaList correct view 1`] = `
           />
         </svg>
       </i>
+      <div
+        className="c2"
+      >
+        <span
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          LastOfUs2.pdf
+        </span>
+      </div>
     </div>
   </div>
   <div
@@ -127,6 +154,16 @@ exports[`MediaList correct view 1`] = `
           />
         </svg>
       </i>
+      <div
+        className="c2"
+      >
+        <span
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          【中文版】ETU PBL Backwards Design Template.docx
+        </span>
+      </div>
     </div>
   </div>
   <div
