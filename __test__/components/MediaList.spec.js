@@ -167,6 +167,11 @@ describe('MediaList', function() {
     expect(MediaList.getThumbnail(media_id, 100, 50)).toEqual(
       `/bos/api/v1/files/${media_id}/thumbnail/?width=100&height=50&mode=zoom_cut`
     )
+    expect(MediaList.getFileId({ id: '1' })).toEqual('1')
+    expect(MediaList.getFileId({ media_id: '2' })).toEqual('2')
+    expect(MediaList.getFileId({ data: '3', id: '1' })).toEqual('3')
+    expect(MediaList.getFileId({ id: '3', media_id: '4' })).toEqual('4')
+    expect(MediaList.getFileId({ data: '5', id: '3' })).toEqual('5')
   })
 
   it('FileName', () => {

@@ -142,6 +142,11 @@ export default class MediaList extends PureComponent {
     if (data.extra && data.extra.attrs) return data.extra.attrs.file_name
   }
 
+  static getFileId = item => {
+    if (item.data) return item.data
+    return item.media_id || item.id
+  }
+
   handleRemoveItem = (id, e) => {
     e.preventDefault()
     e.stopPropagation()
@@ -152,10 +157,11 @@ export default class MediaList extends PureComponent {
     const item = items[index]
     if (item.type !== 'picture' && item.type !== 'video') {
       const a = window.document.createElement('a')
+      const fileId = MediaList.getFileId(item)
       a.href =
         this.props.pdfPrevView && item.type === 'pdf'
-          ? MediaList.getFile(item.data || item.media_id)
-          : MediaList.getDownload(item.data || item.media_id)
+          ? MediaList.getFile(fileId)
+          : MediaList.getDownload(fileId)
       a.target = '_blank'
       document.body.appendChild(a)
       a.click()
@@ -168,15 +174,15 @@ export default class MediaList extends PureComponent {
   }
 
   renderMediaNode = data => {
-    const { width, height, lazyLoad, fixed } = this.props,
-      id = data.media_id
+    const { width, height, lazyLoad, fixed } = this.props
+    const fileId = MediaList.getFileId(data)
     const mediaType = data.type
 
     let thumbnail,
       imgWidth = width / (fixed ? 1 : 1.8),
       imgHeight = height / (fixed ? 1 : 2.5)
 
-    thumbnail = MediaList.getThumbnail(id, width, height)
+    thumbnail = MediaList.getThumbnail(fileId, width, height)
     // 预览模式，小图
     if (mediaType === 'video' || mediaType === 'picture') {
       const img = (
@@ -204,21 +210,22 @@ export default class MediaList extends PureComponent {
     const { items, margin, bordered, background, noName, fixed, width, height, hasDeleteButton = false } = this.props
     return (
       <List margin={margin}>
-        {items.map((data, mediaIndex) => {
-          const fileName = (!noName || (data.type !== 'picture' && data.type !== 'video')) && MediaList.getFileName(data)
+        {items.map((item, mediaIndex) => {
+          const fileName = (!noName || (item.type !== 'picture' && item.type !== 'video')) && MediaList.getFileName(item)
+          const fileId = MediaList.getFileId(item)
           return (
             <List.Item
               onClick={this.onClick.bind(null, items, mediaIndex)}
-              key={data.media_id + '_' + mediaIndex}
+              key={fileId + '_' + mediaIndex}
               bordered={bordered && !noName}
               style={{ width, height }}
               fixed={fixed ? 1 : 0}
               margin={margin}
               background={background}
             >
-              {this.renderMediaNode(data)}
+              {this.renderMediaNode(item)}
               {hasDeleteButton && (
-                <Close onClick={this.handleRemoveItem.bind(null, data.media_id)}>
+                <Close onClick={this.handleRemoveItem.bind(null, fileId)}>
                   <Icon type="delete" />
                 </Close>
               )}
