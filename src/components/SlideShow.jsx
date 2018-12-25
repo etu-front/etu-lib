@@ -115,6 +115,11 @@ export default class SlideShow extends Component {
     if (data.extra && data.extra.attrs) return data.extra.attrs.file_name
   }
 
+  static getFileId = item => {
+    if (item.data) return item.data
+    return item.media_id || item.id
+  }
+
   state = {
     current: this.props.current,
     visible: this.props.visible
@@ -200,10 +205,11 @@ export default class SlideShow extends Component {
   }
 
   renderDownloadIcon(item) {
+    const fileId = SlideShow.getFileId(item)
     if (this.props.canDownload) {
       return (
         <BaseIcon
-          href={SlideShow.getDownload(item.media_id)}
+          href={SlideShow.getDownload(fileId)}
           rel="noopener noreferrer"
           target="_blank"
           download
@@ -217,7 +223,7 @@ export default class SlideShow extends Component {
       return (
         <BaseIcon
           as="a"
-          href={SlideShow.getFile(item.media_id)}
+          href={SlideShow.getFile(fileId)}
           rel="noopener noreferrer"
           target="_blank"
           style={{ marginRight: 20 }}
@@ -237,9 +243,10 @@ export default class SlideShow extends Component {
       size = this.isMultiple ? 80 : 40,
       mediaWidth = window.document.body.clientWidth - size,
       mediaHeight = window.document.body.clientHeight - 20,
-      { media_id, type } = media
+      { type } = media
+    const fileId = SlideShow.getFileId(media)
 
-    const url = SlideShow.getFile(media_id)
+    const url = SlideShow.getFile(fileId)
 
     return (
       <View flex={1} className={'relative'}>
@@ -286,7 +293,7 @@ export default class SlideShow extends Component {
             )}
 
             {type !== 'picture' && type !== 'video' && (
-              <a href={SlideShow.getFile(media.media_id)} rel="noopener noreferrer" target="_blank">
+              <a href={SlideShow.getFile(fileId)} rel="noopener noreferrer" target="_blank">
                 <View align={'center'}>
                   <FileIcon type={type} size={100} />
                   <p className={'t-white m-t-20 f18'}>{SlideShow.getFileName(media)}</p>
@@ -316,11 +323,12 @@ export default class SlideShow extends Component {
               {medias.map((m, idx) => {
                 const item = this.getMedia(idx)
                 const name = SlideShow.getFileName(item)
+                const fileId = SlideShow.getFileId(item)
                 if (item.type === 'video' || item.type === 'picture') {
-                  const url = SlideShow.getThumbnail(item.media_id, 160, 160)
+                  const url = SlideShow.getThumbnail(fileId, 160, 160)
                   return (
                     <li
-                      key={item.media_id}
+                      key={fileId}
                       className={idx === this.state.current ? 'onSelected' : ''}
                       title={name}
                       style={{ background: `url(${url}) center no-repeat` }}
@@ -331,7 +339,7 @@ export default class SlideShow extends Component {
 
                 return (
                   <li
-                    key={item.media_id}
+                    key={fileId}
                     className={idx === this.state.current ? 'onSelected' : ''}
                     title={name}
                     onClick={this.handleChange.bind(null, idx)}
