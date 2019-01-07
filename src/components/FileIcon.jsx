@@ -7,13 +7,14 @@ icons.push('link', 'mp4', 'overlay', 'pack', 'pages', 'pdf', 'ppt', 'psd', 'rtf'
 icons.push('slide', 'stypi', 'txt', 'video', 'visio', 'webex', 'word', 'xml', 'zip')
 
 export const getIconType = fileType => {
+  if (!fileType) return 'attachment'
   const type = fileType.toLowerCase()
   if (['doc', 'docx'].includes(type)) return 'word'
   if (['ppt', 'pptx'].includes(type)) return 'ppt'
   if (icons.indexOf(type) >= 0) return type
   if (['mp3', 'wav', 'ape', 'flac', 'wma'].includes(type)) return 'audio'
   if (['mov', 'ogg', 'avi', 'rmvb', 'flv', 'wmv', 'asf'].includes(type)) return 'video'
-  return 'unknown'
+  return 'attachment'
 }
 
 const CustomIcon = Icon.createFromIconfontCN({

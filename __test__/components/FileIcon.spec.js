@@ -31,7 +31,7 @@ describe('FileIcon', function() {
     expect(getIconType('wma')).toEqual('audio')
     expect(getIconType('mov')).toEqual('video')
     expect(getIconType('ogg')).toEqual('video')
-    expect(getIconType('blurblurblur')).toEqual('unknown')
+    expect(getIconType('blurblurblur')).toEqual('attachment')
   })
 
   it('props size and type', () => {
