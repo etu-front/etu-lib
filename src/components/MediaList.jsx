@@ -144,7 +144,7 @@ export default class MediaList extends PureComponent {
 
   static getFileId = item => {
     if (item.data) return item.data
-    return item.media_id || item.id
+    return item.media_id || item.file_id || item.id
   }
 
   handleRemoveItem = (id, e) => {

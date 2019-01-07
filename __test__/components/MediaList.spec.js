@@ -171,7 +171,9 @@ describe('MediaList', function() {
     expect(MediaList.getFileId({ media_id: '2' })).toEqual('2')
     expect(MediaList.getFileId({ data: '3', id: '1' })).toEqual('3')
     expect(MediaList.getFileId({ id: '3', media_id: '4' })).toEqual('4')
+    expect(MediaList.getFileId({ id: '3', file_id: '4' })).toEqual('4')
     expect(MediaList.getFileId({ data: '5', id: '3' })).toEqual('5')
+    expect(MediaList.getFileId({ file_id: '6', type: 'picture' })).toEqual('6')
   })
 
   it('FileName', () => {
