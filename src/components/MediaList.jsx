@@ -110,7 +110,6 @@ export const Close = styled.div`
   }
 `
 
-@dnd.wrap
 class MediaList extends PureComponent {
   static displayName = 'MediaList'
   static propTypes = {

@@ -162,7 +162,6 @@ describe('MediaList', function() {
     expect(MediaList.getFileName(medias[0])).toEqual('LastOfUs2.pdf')
     expect(MediaList.getFileName({ extra: { attrs: { file_name: 'world' } } })).toEqual('world')
     const media_id = medias[0].media_id
-    console.log(MediaList.getFile(media_id))
     expect(MediaList.getFile(media_id)).toEqual(`/bos/api/v1/files/${media_id}/`)
     expect(MediaList.getDownload(media_id)).toEqual(`/bos/api/v1/files/${media_id}/download/`)
     expect(MediaList.getThumbnail(media_id, 100, 50)).toEqual(
