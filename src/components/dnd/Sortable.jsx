@@ -48,8 +48,9 @@ const Sortable = ({
   children,
   overClassName = '',
   draggingClassName = '',
-  overStyle = { border: '1px solid #999', margin: -1 },
-  draggingStyle = {}
+  overStyle = {},
+  draggingStyle = {},
+  component
 }) => {
   const props = {
     style: {
@@ -59,10 +60,11 @@ const Sortable = ({
     },
     className: classnames({ [draggingClassName]: isDragging, [overClassName]: isOver })
   }
-  return connectDragSource(connectDropTarget(<div {...props}>{children}</div>))
+  const Item = component || 'div'
+  return connectDragSource(connectDropTarget(<Item {...props}>{children}</Item>))
 }
 
-export const generateSortable = (ITEM_TYPE = 'CARD') => (
+export const generateSortable = (ITEM_TYPE = 'SORT_ITEM') => (
   DropTarget(ITEM_TYPE, cardTarget, (connect, monitor) => ({
     connectDropTarget: connect.dropTarget(),
     isOver: monitor.isOver()
@@ -74,4 +76,12 @@ export const generateSortable = (ITEM_TYPE = 'CARD') => (
   )
 )
 
+export const sort = (dragIndex, hoverIndex, data) => {
+  const items = [...data]
+  const item = items[dragIndex]
+  if (!item) return
+  items.splice(dragIndex, 1)
+  items.splice(hoverIndex, 0, item)
+  return items
+}
 export default generateSortable('SORT_ITEM')

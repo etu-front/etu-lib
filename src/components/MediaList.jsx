@@ -2,12 +2,10 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import LazyLoad from 'react-lazyload'
 import styled from 'styled-components'
-import { DragDropContext, DropTarget, DragSource } from 'react-dnd'
-import HTML5Backend from 'react-dnd-html5-backend'
-
 import { Card, Icon, Tooltip } from 'antd'
 import FileIcon from './FileIcon'
-import { generateSortable } from './sort/Sortable'
+
+import dnd from './dnd'
 
 const PlayIcon = styled(Icon)`
   color: white;
@@ -293,14 +291,13 @@ class MediaList extends PureComponent {
       )
       if (onSort) {
         const { type: sortType, ...sortProps } = sortOptions
-        const Sortable = generateSortable(sortType)
+        const Sortable = dnd.generateSortable(sortType)
         return <Sortable key={key} index={index} onSort={this.sortItem} {...sortProps}>{node}</Sortable>
       }
       return node
     })
-
     return <List margin={margin}>{nodes}</List>
   }
 }
 
-export default DragDropContext(HTML5Backend)(MediaList)
+export default dnd.wrap(MediaList)
