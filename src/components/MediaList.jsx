@@ -289,7 +289,7 @@ class MediaList extends PureComponent {
           {fileName && <FileName fixed={fixed} name={fileName} />}
         </List.Item>
       )
-      if (onSort) {
+      if (nodes.length > 1 && onSort) {
         const { type: sortType, ...sortProps } = sortOptions
         const Sortable = dnd.generateSortable(sortType)
         return <Sortable key={key} index={index} onSort={this.sortItem} {...sortProps}>{node}</Sortable>
