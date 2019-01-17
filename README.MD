@@ -9,14 +9,14 @@
 - styled-components
 - react-lazyload
 - prop-types
+- react-dnd
 
 ## Include
 
 - View
 
 - FileIcon
-
-  ![2018-11-23 17 54 15](https://user-images.githubusercontent.com/5368890/48937373-d4b33c00-ef48-11e8-8a46-63f12f07939d.png)
+  ![2019-01-17 15 03 04](https://user-images.githubusercontent.com/5368890/51301125-0c31f680-1a69-11e9-809a-cfbc098da42d.png)
 
   Usage
   ```
@@ -24,6 +24,7 @@
 
     <FileIcon type={'pdf'} size={64} />
   ```
+
 - MediaList
 
   + 普通视图
@@ -38,11 +39,7 @@
 
   ![2018-11-23 17 30 27](https://user-images.githubusercontent.com/5368890/48936438-ec3cf580-ef45-11e8-8d92-c4d8206ed520.png)
 
-- SlideShow
- ![2018-11-23 17 49 20](https://user-images.githubusercontent.com/5368890/48937139-260efb80-ef48-11e8-93ad-7a76698428e1.png)
-
-
-## Usage
+  ## Usage
   ```jsx
   import { MediaList, SlideShow } from '@etu/lib'
   import APIS from 'conf/apis'
@@ -94,6 +91,14 @@
           onDelete={id => console.log(id)}
           width={160}
           height={120}
+          onSort={func}
+          sortOptions={
+            type: 'SORT_ITEM',
+            overStyle: {},
+            draggingStyle: {},
+            overClassName: '',
+            draggingClassName: ''
+          }
         />
         <SlideShow
           canDownload
@@ -108,3 +113,46 @@
   })
   ReactDom.render(<App />, document.getElementById('root'))
   ```
+
+- SlideShow
+ ![2018-11-23 17 49 20](https://user-images.githubusercontent.com/5368890/48937139-260efb80-ef48-11e8-93ad-7a76698428e1.png)
+
+
+- FullScreenModal 全屏 Modal
+
+- dnd 拖动排序
+
+## Usage
+  ```jsx
+  import { dnd } from '@etu/lib'
+
+  const Sortable = dnd.generateSortable('CARD')
+  // or const Sortable = dnd.Sortable // default type: 'SORT_ITEM'
+
+  @dnd.wrap
+  class List extends React.Component {
+    state = {
+      items: [1, 2, 3, 4]
+    }
+
+    handleSort = (currentIndex, hoverIndex) => {
+      this.setState({
+        items: dnd.sort(currentIndex, hoverIndex, this.state.items)
+      })
+    }
+
+    render() {
+      return (
+        <ul>
+          {this.state.items.map((v, index) => (
+            <Sortable component={'li'} index={index} onSort={this.handleSort}>
+              {v}
+            </Sortable>
+          ))}
+        </ul>
+      )
+    }
+  }
+
+  ReactDom.mount(<List />, document.getElementById('root'))
+```

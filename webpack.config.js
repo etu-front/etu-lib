@@ -14,9 +14,12 @@ module.exports = {
     'styled-components': 'styled-components',
     react: 'react',
     'react-dom': 'react-dom',
+    classnames: 'classnames',
     antd: 'antd',
     'prop-types': 'prop-types',
-    'react-lazyload': 'react-lazyload'
+    'react-lazyload': 'react-lazyload',
+    'react-dnd': 'react-dnd',
+    'react-dnd-html5-backend': 'react-dnd-html5-backend'
   },
   output: {
     filename: '[name].js',
