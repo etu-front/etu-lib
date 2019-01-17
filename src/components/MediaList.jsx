@@ -109,6 +109,8 @@ export const Close = styled.div`
     font-size: 18px;
   }
 `
+
+@dnd.wrap
 class MediaList extends PureComponent {
   static displayName = 'MediaList'
   static propTypes = {
@@ -265,6 +267,10 @@ class MediaList extends PureComponent {
       sortOptions
     } = this.props
     const { items } = this.props
+
+    const { type: sortType, ...sortProps } = sortOptions
+    const Sortable = onSort ? dnd.generateSortable(sortType) : null
+
     const nodes = items.map((item, index) => {
       const fileName =
         (!noName || (item.type !== 'picture' && item.type !== 'video')) && MediaList.getFileName(item)
@@ -289,9 +295,7 @@ class MediaList extends PureComponent {
           {fileName && <FileName fixed={fixed} name={fileName} />}
         </List.Item>
       )
-      if (nodes.length > 1 && onSort) {
-        const { type: sortType, ...sortProps } = sortOptions
-        const Sortable = dnd.generateSortable(sortType)
+      if (items.length > 1 && onSort) {
         return <Sortable key={key} index={index} onSort={this.sortItem} {...sortProps}>{node}</Sortable>
       }
       return node
@@ -300,4 +304,4 @@ class MediaList extends PureComponent {
   }
 }
 
-export default dnd.wrap(MediaList)
+export default MediaList

@@ -1,7 +1,7 @@
 import React from 'react'
 import { findDOMNode } from 'react-dom'
 import classnames from 'classnames'
-import { DragSource, DropTarget, ConnectDropTarget, ConnectDragSource } from 'react-dnd'
+import { DragSource, DropTarget } from 'react-dnd'
 
 const cardSource = {
   beginDrag: props => ({
