@@ -135,17 +135,21 @@
       items: [1, 2, 3, 4]
     }
 
-    handleSort = (currentIndex, hoverIndex) => {
+    handleSort = (currentIndex, hoverIndex, dropped, dragged) => {
       this.setState({
         items: dnd.sort(currentIndex, hoverIndex, this.state.items)
       })
+    }
+
+    handleDrop = (currentIndex, hoverIndex, dropped, dragged) => {
+      // saveToServer(this.stat.items)
     }
 
     render() {
       return (
         <ul>
           {this.state.items.map((v, index) => (
-            <Sortable component={'li'} index={index} onSort={this.handleSort}>
+            <Sortable component={'li'} index={index} onSort={this.handleSort} onDrop={this.handleDrop}>
               {v}
             </Sortable>
           ))}
@@ -155,4 +159,10 @@
   }
 
   ReactDom.mount(<List />, document.getElementById('root'))
+```
+
+- EllipsisText
+
+```jsx
+  <EllipsisText height={20}>{text}</EllipsisText>
 ```

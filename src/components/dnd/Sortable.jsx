@@ -34,7 +34,7 @@ const cardTarget = {
       // Dragging upwards
       if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) return
     } catch (sortError) {
-      ;
+      //
     }
     if (!props.onDrop && props.onSort) {
       item.index = hoverIndex
