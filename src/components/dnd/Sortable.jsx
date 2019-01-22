@@ -13,30 +13,40 @@ const cardSource = {
 const cardTarget = {
   hover(props, monitor, component) {
     if (!component) return null
-    const dragIndex = monitor.getItem().index
+    const item = monitor.getItem()
+    const dragIndex = item.index
     const hoverIndex = props.index
     if (dragIndex === hoverIndex) return
+    try {
+      // Determine rectangle on screen
+      const hoverBoundingRect = findDOMNode(component).getBoundingClientRect()
 
-    // Determine rectangle on screen
-    const hoverBoundingRect = findDOMNode(component).getBoundingClientRect()
+      // Get vertical middle
+      const hoverMiddleY = Math.max(10, (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2)
 
-    // Get vertical middle
-    const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
+      // Determine mouse position
+      const clientOffset = monitor.getClientOffset()
 
-    // Determine mouse position
-    const clientOffset = monitor.getClientOffset()
-
-    // Get pixels to the top
-    const hoverClientY = clientOffset.y - hoverBoundingRect.top
-    // Dragging downwards
-    if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) return
-
-    // Dragging upwards
-    if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) return
-
-    // Time to actually perform the action
-    props.onSort(dragIndex, hoverIndex)
-    monitor.getItem().index = hoverIndex
+      // Get pixels to the top
+      const hoverClientY = clientOffset.y - hoverBoundingRect.top
+      // Dragging downwards
+      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) return
+      // Dragging upwards
+      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) return
+    } catch (sortError) {
+      ;
+    }
+    if (!props.onDrop && props.onSort) {
+      item.index = hoverIndex
+    }
+    props.onSort && props.onSort(dragIndex, hoverIndex, props, item)
+  },
+  drop(props, monitor, component) {
+    if (!props.onDrop || !component) return
+    const item = monitor.getItem()
+    const dragIndex = item.index
+    const hoverIndex = props.index
+    props.onDrop(dragIndex, hoverIndex, props, item)
   }
 }
 
