@@ -165,6 +165,7 @@ class MediaList extends PureComponent {
 
   static getFileName = data => {
     if (data.name) return data.name
+    if (data.file_name) return data.file_name
     if (data.extra && data.extra.file_name) return data.extra.file_name
     if (data.extra && data.extra.attrs) return data.extra.attrs.file_name
   }
