@@ -19,7 +19,8 @@ module.exports = {
     'prop-types': 'prop-types',
     'react-lazyload': 'react-lazyload',
     'react-dnd': 'react-dnd',
-    'react-dnd-html5-backend': 'react-dnd-html5-backend'
+    'react-dnd-html5-backend': 'react-dnd-html5-backend',
+    'lodash': 'lodash'
   },
   output: {
     filename: '[name].js',
