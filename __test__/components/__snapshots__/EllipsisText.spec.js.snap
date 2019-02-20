@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EllipsisText props 1`] = `
+.c0 {
+  position: relative;
+}
+
+.c0 > div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "flex": 1,
+      "height": 24,
+      "width": 200,
+    }
+  }
+>
+  <div
+    className=""
+    style={Object {}}
+  >
+    good
+  </div>
+</div>
+`;
+
+exports[`EllipsisText render layout 1`] = `
+.c0 {
+  position: relative;
+}
+
+.c0 > div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "flex": 1,
+      "width": 100,
+    }
+  }
+>
+  <div
+    className="customTextClass"
+    style={
+      Object {
+        "lineHeight": 24,
+      }
+    }
+  >
+    Hello
+  </div>
+</div>
+`;
+
+exports[`EllipsisText snap 1`] = `
+.c0 {
+  position: relative;
+}
+
+.c0 > div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+<div
+  className="c0"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <div
+    className=""
+    style={Object {}}
+  >
+    Consequat exercitation non duis mollit ad sunt proident occaecat ullamco aliquip in. Incididunt cillum sint sint consequat aliqua enim est fugiat occaecat non dolore sunt id do. Est deserunt nisi duis quis fugiat excepteur enim ad amet pariatur. Cillum et velit ad dolor occaecat ex laboris proident est.
+  </div>
+</div>
+`;

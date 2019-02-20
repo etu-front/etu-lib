@@ -4,5 +4,6 @@ import MediaList from './components/MediaList'
 import SlideShow from './components/SlideShow'
 import FullScreenModal from './components/FullScreenModal'
 import dnd from './components/dnd'
+import EllipsisText from './components/EllipsisText'
 
-export { View, FileIcon, MediaList, SlideShow, FullScreenModal, dnd }
+export { View, FileIcon, MediaList, SlideShow, FullScreenModal, dnd, EllipsisText }

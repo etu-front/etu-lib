@@ -17,13 +17,13 @@ const Wrap = styled.div`
     transform: translateY(-50%);
   }
 `
-const EllipsisText = ({ children, className = '', textClassName = '', textStyle = {}, width = 0, height = 0, flex = 1 }) => {
+const EllipsisText = ({ children, className = '', textClassName = '', textStyle = {}, width = 0, height = 0, flex = 1, ...rest }) => {
   const style = { flex }
   if (width) style.width = width
   if (height) style.height = height
   return (
-    <Wrap className={className} style={{ ...style }}>
-      <div style={{ ...textStyle }}>{children}</div>
+    <Wrap className={className} style={{ ...style }} {...rest} >
+      <div style={{ ...textStyle }} className={textClassName}>{children}</div>
     </Wrap>
   )
 }

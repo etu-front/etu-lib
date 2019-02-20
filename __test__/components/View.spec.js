@@ -2,7 +2,6 @@ import React from 'react'
 import View from '../../src/components/View'
 import { shallow, render } from 'enzyme'
 import renderer from 'react-test-renderer'
-import { decodeStream } from 'iconv-lite';
 
 const setup = () => {
   const props = {
