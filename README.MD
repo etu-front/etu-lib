@@ -12,18 +12,43 @@
 - react-dnd
 
 ## Include
+- dnd (dnd.Sortable, dnd.generateSortable, dnd.sort, dnd.wrap)
+- EllipsisText
+- FielIcon
+- FullScreenModal
+- MediaList
+- SlideShow
+- View
+
+## Usage
 
 - View
 
+  Normal
+  ```jsx
+  <View row flex={1} align='center' justify='center'
+    width={200} height={100} background='#cccccc'
+    radius={5}
+    color='#ff0000'
+    onClick={console.log}
+  >
+    hello
+  </View>
+  ```
+  View.Center
+  ```jsx
+  <View.Center height={100} radius={10} color='#ff00ff'>
+    some text
+  </View.Center>
+  ```
+
 - FileIcon
-  ![2019-01-17 15 03 04](https://user-images.githubusercontent.com/5368890/51301125-0c31f680-1a69-11e9-809a-cfbc098da42d.png)
-
-  Usage
-  ```
+  ```jsx
     import { FileIcon } from '@etu/lib'
-
-    <FileIcon type={'pdf'} size={64} />
+    <FileIcon type={'pdf'} size={64} onClick={console.log} style={{}} />
   ```
+  #### types
+  ![2019-01-17 15 03 04](https://user-images.githubusercontent.com/5368890/51301125-0c31f680-1a69-11e9-809a-cfbc098da42d.png)
 
 - MediaList
 
