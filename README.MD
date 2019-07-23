@@ -95,9 +95,7 @@
       "type": "picture",
       "name": "1530871462174.jpg",
       "extra": {
-        ...
         "attrs": {
-          ...
           "file_name": "1530871462174.jpg"
         }
       }
@@ -117,13 +115,13 @@
           width={160}
           height={120}
           onSort={func}
-          sortOptions={
+          sortOptions={{
             type: 'SORT_ITEM',
             overStyle: {},
             draggingStyle: {},
             overClassName: '',
             draggingClassName: ''
-          }
+          }}
         />
         <SlideShow
           canDownload
