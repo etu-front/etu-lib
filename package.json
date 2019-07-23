@@ -1,6 +1,6 @@
 {
   "name": "@etu/lib",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "react base ui library by etu fte team",
   "main": "lib/index.js",
   "repository": {
@@ -8,7 +8,8 @@
     "url": "git@github.com:etu-front/etu-lib.git"
   },
   "scripts": {
-    "build": "yarn lint && yarn test && webpack --progress",
+    "build": "yarn lint && yarn test && webpack --progress && yarn copy",
+    "copy": "cp ./src/index.d.ts ./lib",
     "watch": "webpack --watch --progress",
     "lint": "eslint --ext .jsx,.js src/",
     "analyze": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json",
