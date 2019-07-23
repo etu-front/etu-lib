@@ -276,7 +276,7 @@ export default class SlideShow extends Component {
             {type === 'picture' && (
               <img
                 key={url} // 不设置 Key 会导致 React 替换 src 属性而不是创建新的元素，在新的图像加载完成之前都不会显示出来
-                src={url + 'thumbnail/'}
+                src={url}
                 style={{ maxHeight: mediaHeight, maxWidth: '100%' }}
                 alt={url}
               />

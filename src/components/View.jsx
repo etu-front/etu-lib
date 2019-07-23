@@ -16,7 +16,7 @@ const Container = styled.div`
 `
 
 const View = ({
-  className,
+  className = '',
   children,
   align,
   justify,
