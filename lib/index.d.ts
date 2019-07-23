@@ -1,8 +1,9 @@
 /** eslint-disable */
-import React, { ReactElement, ReactChildren, ReactHTMLElement, SFC } from 'react'
-type Align = 'center' | 'flex-start' | 'flex-end' | 'stretch'
+import React, { ReactElement, ReactChildren, ReactHTMLElement, SFC, CSSProperties } from 'react'
 
-interface IBaseProps extends ReactHTMLElement {
+type Align = 'center' | 'flex-start' | 'flex-end' | 'stretch' | 'space-between' | 'space-around'
+
+interface IBaseProps {
   className?: string | string[] | { [key: string]: boolean };
   style?: CSSProperties;
   children?: JSX.Element[] | JSX.Element;
@@ -13,7 +14,6 @@ interface IViewProps extends IBaseProps {
   flex?: number | string;
   align?: Align;
   justify?: Align;
-  color?: string;
   row?: boolean;
   column?: boolean;
   wrap?: boolean;
